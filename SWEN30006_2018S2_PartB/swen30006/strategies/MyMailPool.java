@@ -8,6 +8,7 @@ import java.util.function.Consumer;
 import automail.MailItem;
 import automail.PriorityMailItem;
 import automail.Robot;
+import automail.RobotType;
 import automail.StorageTube;
 import exceptions.TubeFullException;
 import exceptions.FragileItemBrokenException;
@@ -71,9 +72,9 @@ public class MyMailPool implements IMailPool {
 	
 	private void fillStorageTube(Robot robot) throws FragileItemBrokenException {
 		StorageTube tube = robot.getTube();
-		StorageTube temp = new StorageTube();
+		StorageTube temp = new StorageTube(tube.getMaximumCapacity());
 		try { // Get as many items as available or as fit
-				if (robot.isStrong()) {
+				if (robot.getType() != RobotType.Weak) {
 					while(temp.getSize() < MAX_TAKE && !pool.isEmpty() ) {
 						Item item = pool.remove();
 						if (!item.heavy) lightCount--;
@@ -102,7 +103,7 @@ public class MyMailPool implements IMailPool {
 
 	@Override
 	public void registerWaiting(Robot robot) { // assumes won't be there
-		if (robot.isStrong()) {
+		if (robot.getType() != RobotType.Weak) {
 			robots.add(robot); 
 		} else {
 			robots.addLast(robot); // weak robot last as want more efficient delivery with highest priorities

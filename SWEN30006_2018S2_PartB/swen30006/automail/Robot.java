@@ -22,7 +22,7 @@ public class Robot {
     private int destination_floor;
     private IMailPool mailPool;
     private boolean receivedDispatch;
-    private boolean strong;
+    private RobotType type;
     
     private MailItem deliveryItem;
     
@@ -37,16 +37,16 @@ public class Robot {
      * @param mailPool is the source of mail items
      * @param strong is whether the robot can carry heavy items
      */
-    public Robot(IMailDelivery delivery, IMailPool mailPool, boolean strong){
+    public Robot(IMailDelivery delivery, IMailPool mailPool, RobotType type){
     	id = "R" + hashCode();
         // current_state = RobotState.WAITING;
     	current_state = RobotState.RETURNING;
         current_floor = Building.MAILROOM_LOCATION;
-        tube = new StorageTube();
+        tube = new StorageTube(type.getTubeSize());
         this.delivery = delivery;
         this.mailPool = mailPool;
         this.receivedDispatch = false;
-        this.strong = strong;
+        this.type = type;
         this.deliveryCounter = 0;
     }
     
@@ -54,8 +54,8 @@ public class Robot {
     	receivedDispatch = true;
     }
     
-    public boolean isStrong() {
-    	return strong;
+    public RobotType getType() {
+    	return type;
     }
 
     /**
@@ -122,7 +122,7 @@ public class Robot {
     private void setRoute() throws ItemTooHeavyException{
         /** Pop the item from the StorageUnit */
         deliveryItem = tube.pop();
-        if (!strong && deliveryItem.weight > 2000) throw new ItemTooHeavyException(); 
+        if (type == RobotType.Weak && deliveryItem.weight > 2000) throw new ItemTooHeavyException(); 
         /** Set the destination floor */
         destination_floor = deliveryItem.getDestFloor();
     }
@@ -142,7 +142,7 @@ public class Robot {
     }
     
     private String getIdTube() {
-    	return String.format("%s(%1d/%1d)", id, tube.getSize(), tube.MAXIMUM_CAPACITY);
+    	return String.format("%s(%1d/%1d)", id, tube.getSize(), tube.getMaximumCapacity());
     }
     
     /**
