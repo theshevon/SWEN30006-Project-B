@@ -5,11 +5,13 @@ import java.util.Comparator;
 import java.util.ListIterator;
 import java.util.function.Consumer;
 
+import automail.CarefulRobot;
 import automail.MailItem;
 import automail.PriorityMailItem;
 import automail.Robot;
 import automail.RobotType;
 import automail.StorageTube;
+import automail.WeakRobot;
 import exceptions.TubeFullException;
 import exceptions.FragileItemBrokenException;
 
@@ -18,13 +20,15 @@ public class MyMailPool implements IMailPool {
 		int priority;
 		int destination;
 		boolean heavy;
+		boolean isFragile;
 		MailItem mailItem;
 		// Use stable sort to keep arrival time relative positions
 		
 		public Item(MailItem mailItem) {
 			priority = (mailItem instanceof PriorityMailItem) ? ((PriorityMailItem) mailItem).getPriorityLevel() : 1;
-			heavy = mailItem.getWeight() >= 2000;
+			heavy = mailItem.getWeight() >= WeakRobot.MAX_WEIGHT;
 			destination = mailItem.getDestFloor();
+			isFragile = mailItem.getFragile();
 			this.mailItem = mailItem;
 		}
 	}
@@ -46,23 +50,32 @@ public class MyMailPool implements IMailPool {
 		}
 	}
 	
-	private LinkedList<Item> pool;
-	private static final int MAX_TAKE = 4;
+	private LinkedList<Item> normalMailPool;
+	private LinkedList<Item> fragileMailPool;
 	private LinkedList<Robot> robots;
 	private int lightCount;
 
 	public MyMailPool(){
 		// Start empty
-		pool = new LinkedList<Item>();
+		normalMailPool = new LinkedList<Item>();
+		fragileMailPool = new LinkedList<Item>();
 		lightCount = 0;
 		robots = new LinkedList<Robot>();
 	}
 
 	public void addToPool(MailItem mailItem) {
 		Item item = new Item(mailItem);
-		pool.add(item);
-		if (!item.heavy) lightCount++;
-		pool.sort(new ItemComparator());
+		
+		if (item.isFragile) {
+			fragileMailPool.add(item);
+		}
+		else{
+			normalMailPool.add(item);
+			if (!item.heavy) lightCount++;
+		}
+		
+		normalMailPool.sort(new ItemComparator());
+		fragileMailPool.sort(new ItemComparator());
 	}
 	
 	@Override
@@ -72,29 +85,35 @@ public class MyMailPool implements IMailPool {
 	
 	private void fillStorageTube(Robot robot) throws FragileItemBrokenException {
 		StorageTube tube = robot.getTube();
-		StorageTube temp = new StorageTube(tube.getMaximumCapacity());
+				
 		try { // Get as many items as available or as fit
-				if (robot.getType() != RobotType.Weak) {
-					while(temp.getSize() < MAX_TAKE && !pool.isEmpty() ) {
-						Item item = pool.remove();
+			
+			if (robot instanceof CarefulRobot && fragileMailPool.size() > 0) {
+				tube.addItem(fragileMailPool.remove().mailItem); //only take one fragile item
+			}else {
+				if (!(robot instanceof WeakRobot)) {
+					while(tube.getSize() < tube.getMaximumCapacity() && !normalMailPool.isEmpty() ) {
+						Item item = normalMailPool.remove();
 						if (!item.heavy) lightCount--;
-						temp.addItem(item.mailItem);
+						tube.addItem(item.mailItem);
 					}
 				} else {
-					ListIterator<Item> i = pool.listIterator();
-					while(temp.getSize() < MAX_TAKE && lightCount > 0) {
+					ListIterator<Item> i = normalMailPool.listIterator();
+					while(tube.getSize() < tube.getMaximumCapacity() && lightCount > 0) {
 						Item item = i.next();
 						if (!item.heavy) {
-							temp.addItem(item.mailItem);
+							tube.addItem(item.mailItem);
 							i.remove();
 							lightCount--;
 						}
 					}
 				}
-				if (temp.getSize() > 0) {
-					while (!temp.isEmpty()) tube.addItem(temp.pop());
-					robot.dispatch();
-				}
+			}
+			
+			if (tube.getSize() > 0) {
+				System.out.printf("NO_ITEMS: %d\n", tube.getSize());
+				robot.dispatch();
+			}
 		}
 		catch(TubeFullException e){
 			e.printStackTrace();
@@ -103,7 +122,7 @@ public class MyMailPool implements IMailPool {
 
 	@Override
 	public void registerWaiting(Robot robot) { // assumes won't be there
-		if (robot.getType() != RobotType.Weak) {
+		if (!(robot instanceof WeakRobot)){
 			robots.add(robot); 
 		} else {
 			robots.addLast(robot); // weak robot last as want more efficient delivery with highest priorities

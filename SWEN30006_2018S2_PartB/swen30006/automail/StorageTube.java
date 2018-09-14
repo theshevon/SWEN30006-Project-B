@@ -1,9 +1,8 @@
 package automail;
 
+import java.util.LinkedList;
 import exceptions.FragileItemBrokenException;
 import exceptions.TubeFullException;
-
-import java.util.Stack;
 
 /**
  * The storage tube carried by the robot.
@@ -11,14 +10,16 @@ import java.util.Stack;
 public class StorageTube {
 
     private final int maximumCapacity;
-    public Stack<MailItem> tube;
+    private LinkedList<MailItem> tube;
+    private RobotType robotType;
 
     /**
      * Constructor for the storage tube
      */
-    public StorageTube(int maximumCapacity){
+    public StorageTube(int maximumCapacity, RobotType robotType){
+    	this.robotType = robotType;
     	this.maximumCapacity = maximumCapacity;
-        this.tube = new Stack<MailItem>();
+        this.tube = new LinkedList<MailItem>();
     }
 
     public int getMaximumCapacity() {
@@ -55,7 +56,7 @@ public class StorageTube {
         if(tube.size() < maximumCapacity){
         	if (tube.isEmpty()) {
         		tube.add(item);
-        	} else if (item.getFragile() || tube.peek().getFragile()) {
+        	} else if (robotType != RobotType.Careful && (item.getFragile() || tube.peek().getFragile())) {
         		throw new FragileItemBrokenException();
         	} else {
         		tube.add(item);
@@ -73,8 +74,8 @@ public class StorageTube {
     /** 
      * @return the first item in the storage tube (after removing it)
      */
-    public MailItem pop(){
-        return tube.pop();
+    public MailItem removeItem(){
+        return tube.removeFirst();
     }
 
 }

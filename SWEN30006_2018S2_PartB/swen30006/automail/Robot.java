@@ -10,7 +10,7 @@ import java.util.TreeMap;
 /**
  * The robot delivers mail!
  */
-public class Robot {
+public abstract class Robot {
 
 	StorageTube tube;
     IMailDelivery delivery;
@@ -22,11 +22,12 @@ public class Robot {
     private int destination_floor;
     private IMailPool mailPool;
     private boolean receivedDispatch;
-    private RobotType type;
+    private final int maxWeight;
     
     private MailItem deliveryItem;
     
     private int deliveryCounter;
+    private RobotType type;
     
 
     /**
@@ -37,25 +38,22 @@ public class Robot {
      * @param mailPool is the source of mail items
      * @param strong is whether the robot can carry heavy items
      */
-    public Robot(IMailDelivery delivery, IMailPool mailPool, RobotType type){
+    public Robot(IMailDelivery delivery, IMailPool mailPool, int maxWeight, int tubeSize, RobotType type){
     	id = "R" + hashCode();
         // current_state = RobotState.WAITING;
     	current_state = RobotState.RETURNING;
         current_floor = Building.MAILROOM_LOCATION;
-        tube = new StorageTube(type.getTubeSize());
+        tube = new StorageTube(tubeSize, type);
+        this.maxWeight = maxWeight;
         this.delivery = delivery;
         this.mailPool = mailPool;
-        this.receivedDispatch = false;
         this.type = type;
+        this.receivedDispatch = false;
         this.deliveryCounter = 0;
     }
     
     public void dispatch() {
     	receivedDispatch = true;
-    }
-    
-    public RobotType getType() {
-    	return type;
     }
 
     /**
@@ -69,7 +67,7 @@ public class Robot {
     			/** If its current position is at the mailroom, then the robot should change state */
                 if(current_floor == Building.MAILROOM_LOCATION){
                 	while(!tube.isEmpty()) {
-                		MailItem mailItem = tube.pop();
+                		MailItem mailItem = tube.removeItem();
                 		mailPool.addToPool(mailItem);
                         System.out.printf("T: %3d > old addToPool [%s]%n", Clock.Time(), mailItem.toString());
                 	}
@@ -96,7 +94,7 @@ public class Robot {
                     /** Delivery complete, report this to the simulator! */
                     delivery.deliver(deliveryItem);
                     deliveryCounter++;
-                    if(deliveryCounter > 4){  // Implies a simulation bug
+                    if(deliveryCounter > tube.getMaximumCapacity()){  // Implies a simulation bug
                     	throw new ExcessiveDeliveryException();
                     }
                     /** Check if want to return, i.e. if there are no more items in the tube*/
@@ -115,14 +113,22 @@ public class Robot {
                 break;
     	}
     }
+    
+    public int getCurrentFloor() {
+    	return current_floor;
+    }
+    
+    public void setCurrentFloor(int floor) {
+    	current_floor = floor;
+    }
 
     /**
      * Sets the route for the robot
      */
     private void setRoute() throws ItemTooHeavyException{
         /** Pop the item from the StorageUnit */
-        deliveryItem = tube.pop();
-        if (type == RobotType.Weak && deliveryItem.weight > 2000) throw new ItemTooHeavyException(); 
+        deliveryItem = tube.removeItem();
+        if (deliveryItem.weight > maxWeight) throw new ItemTooHeavyException(); 
         /** Set the destination floor */
         destination_floor = deliveryItem.getDestFloor();
     }
@@ -132,11 +138,16 @@ public class Robot {
      * @param destination the floor towards which the robot is moving
      */
     private void moveTowards(int destination) throws FragileItemBrokenException {
-        if (deliveryItem != null && deliveryItem.getFragile() || !tube.isEmpty() && tube.peek().getFragile()) throw new FragileItemBrokenException();
+    	
+    	if (type == RobotType.Careful) {
+    		if (!tube.isEmpty() && tube.peek().getFragile()) throw new FragileItemBrokenException();
+    	}else{
+    		if (deliveryItem != null && deliveryItem.getFragile() || !tube.isEmpty() && tube.peek().getFragile()) throw new FragileItemBrokenException();
+    	}
+    	
         if(current_floor < destination){
             current_floor++;
-        }
-        else{
+        }else{
             current_floor--;
         }
     }
