@@ -16,7 +16,7 @@ public class StorageTube {
     /**
      * Constructor for the storage tube
      */
-    public StorageTube(int maximumCapacity, RobotType robotType){
+    public StorageTube(RobotType robotType, int maximumCapacity){
     	this.robotType = robotType;
     	this.maximumCapacity = maximumCapacity;
         this.tube = new LinkedList<MailItem>();

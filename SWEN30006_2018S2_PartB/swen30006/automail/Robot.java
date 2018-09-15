@@ -21,13 +21,10 @@ public abstract class Robot {
     private int current_floor;
     private int destination_floor;
     private IMailPool mailPool;
-    private boolean receivedDispatch;
-    private final int maxWeight;
-    
+    private boolean receivedDispatch;    
     private MailItem deliveryItem;
     
     private int deliveryCounter;
-    private RobotType type;
     
 
     /**
@@ -38,16 +35,14 @@ public abstract class Robot {
      * @param mailPool is the source of mail items
      * @param strong is whether the robot can carry heavy items
      */
-    public Robot(IMailDelivery delivery, IMailPool mailPool, int maxWeight, int tubeSize, RobotType type){
+    public Robot(IMailDelivery delivery, IMailPool mailPool, RobotType type, int tubeSize){
     	id = "R" + hashCode();
         // current_state = RobotState.WAITING;
     	current_state = RobotState.RETURNING;
         current_floor = Building.MAILROOM_LOCATION;
-        tube = new StorageTube(tubeSize, type);
-        this.maxWeight = maxWeight;
+        tube = new StorageTube(type, tubeSize);
         this.delivery = delivery;
         this.mailPool = mailPool;
-        this.type = type;
         this.receivedDispatch = false;
         this.deliveryCounter = 0;
     }
@@ -118,8 +113,12 @@ public abstract class Robot {
     	return current_floor;
     }
     
-    public void setCurrentFloor(int floor) {
-    	current_floor = floor;
+    public int getDestinationFloor() {
+    	return destination_floor;
+    }
+    
+    public void setCurrentFloor(int nextFloor) {
+    	current_floor = nextFloor;
     }
 
     /**
@@ -128,26 +127,31 @@ public abstract class Robot {
     private void setRoute() throws ItemTooHeavyException{
         /** Pop the item from the StorageUnit */
         deliveryItem = tube.removeItem();
-        if (deliveryItem.weight > maxWeight) throw new ItemTooHeavyException(); 
+        if (deliveryItem.weight > getType().getMaxWeight()) throw new ItemTooHeavyException(); 
         /** Set the destination floor */
         destination_floor = deliveryItem.getDestFloor();
     }
-
+    
     /**
      * Generic function that moves the robot towards the destination
      * @param destination the floor towards which the robot is moving
      */
-    private void moveTowards(int destination) throws FragileItemBrokenException {
+    public void moveTowards(int destination) throws FragileItemBrokenException {
     	
-    	if (type == RobotType.Careful) {
+    	if (getType() == RobotType.Careful) {
     		if (!tube.isEmpty() && tube.peek().getFragile()) throw new FragileItemBrokenException();
-    	}else{
+//    		if (current_floor == Building.MAILROOM_LOCATION) {
+//    			setSkip(false);
+//    		}
+    	}else {
     		if (deliveryItem != null && deliveryItem.getFragile() || !tube.isEmpty() && tube.peek().getFragile()) throw new FragileItemBrokenException();
     	}
     	
+    	
         if(current_floor < destination){
             current_floor++;
-        }else{
+        }
+        else{
             current_floor--;
         }
     }
@@ -173,6 +177,8 @@ public abstract class Robot {
 	public StorageTube getTube() {
 		return tube;
 	}
+
+	public abstract RobotType getType();
     
 	static private int count = 0;
 	static private Map<Integer, Integer> hashMap = new TreeMap<Integer, Integer>();

@@ -22,11 +22,13 @@ public class MyMailPool implements IMailPool {
 		boolean heavy;
 		boolean isFragile;
 		MailItem mailItem;
+		final int HEAVY_ITEM_WEIGHT = RobotType.Weak.getMaxWeight();
+		
 		// Use stable sort to keep arrival time relative positions
 		
 		public Item(MailItem mailItem) {
 			priority = (mailItem instanceof PriorityMailItem) ? ((PriorityMailItem) mailItem).getPriorityLevel() : 1;
-			heavy = mailItem.getWeight() >= WeakRobot.MAX_WEIGHT;
+			heavy = mailItem.getWeight() >= HEAVY_ITEM_WEIGHT;
 			destination = mailItem.getDestFloor();
 			isFragile = mailItem.getFragile();
 			this.mailItem = mailItem;
@@ -88,7 +90,7 @@ public class MyMailPool implements IMailPool {
 				
 		try { // Get as many items as available or as fit
 			
-			if (robot instanceof CarefulRobot && fragileMailPool.size() > 0) {
+			if (robot.getType() == RobotType.Careful && fragileMailPool.size() > 0) {
 				tube.addItem(fragileMailPool.remove().mailItem); //only take one fragile item
 			}else {
 				if (!(robot instanceof WeakRobot)) {
@@ -111,7 +113,6 @@ public class MyMailPool implements IMailPool {
 			}
 			
 			if (tube.getSize() > 0) {
-				System.out.printf("NO_ITEMS: %d\n", tube.getSize());
 				robot.dispatch();
 			}
 		}
@@ -122,7 +123,7 @@ public class MyMailPool implements IMailPool {
 
 	@Override
 	public void registerWaiting(Robot robot) { // assumes won't be there
-		if (!(robot instanceof WeakRobot)){
+		if (robot.getType() != RobotType.Weak){
 			robots.add(robot); 
 		} else {
 			robots.addLast(robot); // weak robot last as want more efficient delivery with highest priorities
