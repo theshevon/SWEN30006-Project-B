@@ -142,17 +142,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <enumeration id="15" language="java" name="automail.RobotType" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
-    file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/automail/RobotType.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1690" y="950"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </enumeration>  
-  <interface id="16" language="java" name="automail.IMailDelivery" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
+  <interface id="15" language="java" name="automail.IMailDelivery" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/automail/IMailDelivery.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1220" y="-230"/>    
@@ -162,7 +152,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <enumeration id="17" language="java" name="automail.Robot.RobotState" 
+  <enumeration id="16" language="java" name="automail.Robot.RobotState" 
     project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/automail/Robot.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -173,7 +163,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <class id="18" language="java" name="automail.Clock" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
+  <class id="17" language="java" name="automail.Clock" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/automail/Clock.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="454" y="346"/>    
@@ -183,7 +173,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="19" language="java" name="automail.Building" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
+  <class id="18" language="java" name="automail.Building" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/automail/Building.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="454" y="125"/>    
@@ -193,7 +183,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="20" language="java" name="automail.Simulation" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
+  <class id="19" language="java" name="automail.Simulation" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/automail/Simulation.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2312" y="127"/>    
@@ -203,7 +193,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="21" language="java" name="automail.Simulation.ReportDelivery" 
+  <class id="20" language="java" name="automail.Simulation.ReportDelivery" 
     project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/automail/Simulation.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -214,227 +204,215 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <generalization id="22">    
+  <generalization id="21">    
     <end type="SOURCE" refId="9"/>    
     <end type="TARGET" refId="13"/>  
   </generalization>  
-  <association id="23">    
+  <association id="22">    
     <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="24" name="deliveryItem">        
+      <attribute id="23" name="deliveryItem">        
         <position height="0" width="0" x="-2" y="2"/>      
       </attribute>      
-      <multiplicity id="25" minimum="0" maximum="1">        
+      <multiplicity id="24" minimum="0" maximum="1">        
         <position height="0" width="0" x="-2" y="2"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="26">    
+  <association id="25">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="27" name="fragileMailPool">        
+      <attribute id="26" name="fragileMailPool">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="28" minimum="0" maximum="2147483647">        
+      <multiplicity id="27" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="29">    
+  <association id="28">    
     <bendpoint x="962" y="719"/>    
     <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="30" name="current_state">        
+      <attribute id="29" name="current_state">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="31" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="32">    
-    <bendpoint x="1032" y="462"/>    
-    <bendpoint x="1069" y="466"/>    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="33" name="robots">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="34" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="35">    
-    <end type="SOURCE" refId="21"/>    
-    <end type="TARGET" refId="16"/>  
-  </realization>  
-  <association id="36">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="37" name="normalMailPool">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="38" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="39">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="21"/>  
-  </nesting>  
-  <generalization id="40">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="12"/>  
-  </generalization>  
-  <association id="41">    
-    <end type="SOURCE" refId="20" navigable="false">      
-      <attribute id="42" name="MAIL_DELIVERED">        
-        <position height="0" width="0" x="-2" y="2"/>      
-      </attribute>      
-      <multiplicity id="43" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-2" y="2"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="44">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="8"/>  
-  </nesting>  
-  <association id="45">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="46" name="mailItem">        
-        <position height="0" width="0" x="-2" y="2"/>      
-      </attribute>      
-      <multiplicity id="47" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-2" y="2"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="48">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="17"/>  
-  </nesting>  
-  <nesting id="49">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="7"/>  
-  </nesting>  
-  <association id="50">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="51" name="tube">        
-        <position height="0" width="0" x="-2" y="2"/>      
-      </attribute>      
-      <multiplicity id="52" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-2" y="2"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="53">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="13"/>  
-  </generalization>  
-  <generalization id="54">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="13"/>  
-  </generalization>  
-  <generalization id="55">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="13"/>  
-  </generalization>  
-  <association id="56">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="57" name="mailPool">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="58" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="59">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <association id="60">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="61" name="mailPool">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="62" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="63">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="64" name="robots">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="65" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="66">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="67" name="delivery">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="68" minimum="0" maximum="1">        
+      <multiplicity id="30" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="16" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="69">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="70" name="robotType">        
+  <association id="31">    
+    <bendpoint x="1032" y="462"/>    
+    <bendpoint x="1069" y="466"/>    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="32" name="robots">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="71" minimum="0" maximum="1">        
+      <multiplicity id="33" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="34">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="15"/>  
+  </realization>  
+  <association id="35">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="36" name="normalMailPool">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="37" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="38">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="20"/>  
+  </nesting>  
+  <generalization id="39">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <association id="40">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="41" name="MAIL_DELIVERED">        
+        <position height="0" width="0" x="-2" y="2"/>      
+      </attribute>      
+      <multiplicity id="42" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-2" y="2"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="43">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </nesting>  
+  <association id="44">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="45" name="mailItem">        
+        <position height="0" width="0" x="-2" y="2"/>      
+      </attribute>      
+      <multiplicity id="46" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-2" y="2"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="47">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="16"/>  
+  </nesting>  
+  <nesting id="48">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="7"/>  
+  </nesting>  
+  <association id="49">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="50" name="tube">        
+        <position height="0" width="0" x="-2" y="2"/>      
+      </attribute>      
+      <multiplicity id="51" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-2" y="2"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="52">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="13"/>  
+  </generalization>  
+  <generalization id="53">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="13"/>  
+  </generalization>  
+  <generalization id="54">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="13"/>  
+  </generalization>  
+  <association id="55">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="56" name="mailPool">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="57" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="58">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <association id="59">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="60" name="mailPool">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="61" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="62">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="63" name="robots">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="64" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="65">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="66" name="delivery">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="67" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="15" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="72">    
+  <association id="68">    
     <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="73" name="tube">        
+      <attribute id="69" name="tube">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="74" minimum="0" maximum="1">        
+      <multiplicity id="70" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="75">    
+  <association id="71">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="76" name="mailPool">        
+      <attribute id="72" name="mailPool">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="77" minimum="0" maximum="1">        
+      <multiplicity id="73" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    

@@ -27,6 +27,23 @@ public class Simulation {
     private static ArrayList<MailItem> MAIL_DELIVERED;
     private static double total_score = 0;
 
+    public static enum RobotType {
+    	Big(Integer.MAX_VALUE), 
+    	Careful(Integer.MAX_VALUE), 
+    	Standard(Integer.MAX_VALUE), 
+    	Weak(2000);
+    	
+    	private int maxCarryingWeight;
+    	
+    	private RobotType(int maxCarryingWeight) {
+    		this.maxCarryingWeight = maxCarryingWeight;
+    	}
+    	
+    	public int getMaxWeight() {
+    		return maxCarryingWeight;
+    	}
+    }
+    
     public static void main(String[] args) throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException {
     	Properties automailProperties = new Properties();
 		// Default properties

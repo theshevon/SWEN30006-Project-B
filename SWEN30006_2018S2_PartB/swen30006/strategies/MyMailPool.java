@@ -1,19 +1,17 @@
 package strategies;
 
-import java.util.LinkedList;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.ListIterator;
-import java.util.function.Consumer;
 
-import automail.CarefulRobot;
 import automail.MailItem;
 import automail.PriorityMailItem;
 import automail.Robot;
-import automail.RobotType;
+import automail.Simulation.RobotType;
 import automail.StorageTube;
 import automail.WeakRobot;
-import exceptions.TubeFullException;
 import exceptions.FragileItemBrokenException;
+import exceptions.TubeFullException;
 
 public class MyMailPool implements IMailPool {
 	private class Item {

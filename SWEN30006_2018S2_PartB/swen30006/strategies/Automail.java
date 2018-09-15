@@ -7,9 +7,10 @@ import automail.BigRobot;
 import automail.CarefulRobot;
 import automail.IMailDelivery;
 import automail.Robot;
-import automail.RobotType;
+import automail.Simulation.RobotType;
 import automail.StandardRobot;
 import automail.WeakRobot;
+
 
 public class Automail {
 	      
