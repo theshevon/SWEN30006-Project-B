@@ -1,6 +1,8 @@
 package automail;
 
 import java.util.LinkedList;
+
+import automail.Simulation.RobotType;
 import exceptions.FragileItemBrokenException;
 import exceptions.TubeFullException;
 
@@ -9,26 +11,26 @@ import exceptions.TubeFullException;
  */
 public class StorageTube {
 
-    private final int maximumCapacity;
+    private final int CAPACITY;
     private LinkedList<MailItem> tube;
 
     /**
      * Constructor for the storage tube
      */
-    public StorageTube(int maximumCapacity){
-    	this.maximumCapacity = maximumCapacity;
+    public StorageTube(int capacity){
+    	this.CAPACITY = capacity;
         this.tube = new LinkedList<MailItem>();
     }
 
     public int getMaximumCapacity() {
-    	return maximumCapacity;
+    	return CAPACITY;
     }
     
     /**
      * @return if the storage tube is full
      */
     public boolean isFull(){
-        return tube.size() == maximumCapacity;
+        return tube.size() == CAPACITY;
     }
 
     /**
@@ -51,10 +53,15 @@ public class StorageTube {
      * @throws TubeFullException thrown if an item is added which exceeds the capacity
      */
     public void addItem(MailItem item, RobotType robotType) throws TubeFullException, FragileItemBrokenException {
-        if(tube.size() < maximumCapacity){
+    	
+    	if (robotType != RobotType.Careful) {
+    		throw new FragileItemBrokenException();
+    	}
+    	
+        if(tube.size() < CAPACITY){
         	if (tube.isEmpty()) {
         		tube.add(item);
-        	} else if (robotType != RobotType.Careful && (item.getFragile() || tube.peek().getFragile())) {
+        	} else if (item.getFragile() || tube.peek().getFragile()) {
         		throw new FragileItemBrokenException();
         	} else {
         		tube.add(item);

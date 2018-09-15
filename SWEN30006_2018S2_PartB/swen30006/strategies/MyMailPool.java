@@ -14,28 +14,29 @@ import exceptions.FragileItemBrokenException;
 import exceptions.TubeFullException;
 
 public class MyMailPool implements IMailPool {
+	
 	private class Item {
 		int priority;
 		int destination;
-		boolean heavy;
+		boolean isHeavy;
 		boolean isFragile;
 		MailItem mailItem;
-		final int HEAVY_ITEM_WEIGHT = RobotType.Weak.getMaxWeight();
 		
 		// Use stable sort to keep arrival time relative positions
 		
 		public Item(MailItem mailItem) {
 			priority = (mailItem instanceof PriorityMailItem) ? ((PriorityMailItem) mailItem).getPriorityLevel() : 1;
-			heavy = mailItem.getWeight() >= HEAVY_ITEM_WEIGHT;
+			isHeavy = mailItem.getWeight() >= RobotType.Weak.getMaxWeight();
 			destination = mailItem.getDestFloor();
 			isFragile = mailItem.getFragile();
 			this.mailItem = mailItem;
 		}
 	}
 	
-	public class ItemComparator implements Comparator<Item> {
+	private class ItemComparator implements Comparator<Item> {
 		@Override
 		public int compare(Item i1, Item i2) {
+			
 			int order = 0;
 			if (i1.priority < i2.priority) {
 				order = 1;
@@ -71,7 +72,7 @@ public class MyMailPool implements IMailPool {
 		}
 		else{
 			normalMailPool.add(item);
-			if (!item.heavy) lightCount++;
+			if (!item.isHeavy) lightCount++;
 		}
 		
 		normalMailPool.sort(new ItemComparator());
@@ -95,14 +96,14 @@ public class MyMailPool implements IMailPool {
 				if (!(robot instanceof WeakRobot)) {
 					while(tube.getSize() < tube.getMaximumCapacity() && !normalMailPool.isEmpty() ) {
 						Item item = normalMailPool.remove();
-						if (!item.heavy) lightCount--;
+						if (!item.isHeavy) lightCount--;
 						tube.addItem(item.mailItem, type);
 					}
 				} else {
 					ListIterator<Item> i = normalMailPool.listIterator();
 					while(tube.getSize() < tube.getMaximumCapacity() && lightCount > 0) {
 						Item item = i.next();
-						if (!item.heavy) {
+						if (!item.isHeavy) {
 							tube.addItem(item.mailItem, type);
 							i.remove();
 							lightCount--;

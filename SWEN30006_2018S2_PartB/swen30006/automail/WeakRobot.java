@@ -1,19 +1,11 @@
 package automail;
 
+import automail.Simulation.RobotType;
 import strategies.IMailPool;
 
 public class WeakRobot extends Robot{
-	
-	public static final RobotType TYPE = RobotType.Weak;
-	public static final int TUBE_SIZE = 4;
 
 	public WeakRobot(IMailDelivery delivery, IMailPool mailPool) {
-		super(delivery, mailPool, TYPE, TUBE_SIZE);
+		super(delivery, mailPool, RobotType.Weak);
 	}
-	
-	@Override
-	public RobotType getType() {
-		return TYPE;
-	}
-
 }
