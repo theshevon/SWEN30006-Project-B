@@ -22,7 +22,7 @@ public class CarefulRobot extends Robot {
 	
 	public void step() throws ItemTooHeavyException, ExcessiveDeliveryException, FragileItemBrokenException {
 		
-		if ((current_state == RobotState.DELIVERING & getCurrentFloor() != getDestinationFloor()) || (current_state == RobotState.RETURNING)) {
+		if ((current_state == RobotState.DELIVERING || current_state == RobotState.RETURNING) && getCurrentFloor() != getDestinationFloor()) {
 			if (!skipNextStep) {
 				super.step();
 			}

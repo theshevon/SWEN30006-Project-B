@@ -11,13 +11,11 @@ public class StorageTube {
 
     private final int maximumCapacity;
     private LinkedList<MailItem> tube;
-    private RobotType robotType;
 
     /**
      * Constructor for the storage tube
      */
-    public StorageTube(RobotType robotType, int maximumCapacity){
-    	this.robotType = robotType;
+    public StorageTube(int maximumCapacity){
     	this.maximumCapacity = maximumCapacity;
         this.tube = new LinkedList<MailItem>();
     }
@@ -52,7 +50,7 @@ public class StorageTube {
      * @param item The item being added
      * @throws TubeFullException thrown if an item is added which exceeds the capacity
      */
-    public void addItem(MailItem item) throws TubeFullException, FragileItemBrokenException {
+    public void addItem(MailItem item, RobotType robotType) throws TubeFullException, FragileItemBrokenException {
         if(tube.size() < maximumCapacity){
         	if (tube.isEmpty()) {
         		tube.add(item);

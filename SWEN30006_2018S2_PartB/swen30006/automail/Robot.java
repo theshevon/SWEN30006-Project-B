@@ -40,7 +40,7 @@ public abstract class Robot {
         // current_state = RobotState.WAITING;
     	current_state = RobotState.RETURNING;
         current_floor = Building.MAILROOM_LOCATION;
-        tube = new StorageTube(type, tubeSize);
+        tube = new StorageTube(tubeSize);
         this.delivery = delivery;
         this.mailPool = mailPool;
         this.receivedDispatch = false;

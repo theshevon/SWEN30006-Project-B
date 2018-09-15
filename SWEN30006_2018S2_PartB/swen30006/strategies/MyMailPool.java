@@ -87,24 +87,25 @@ public class MyMailPool implements IMailPool {
 	
 	private void fillStorageTube(Robot robot) throws FragileItemBrokenException {
 		StorageTube tube = robot.getTube();
-				
+		RobotType type = robot.getType();
+		
 		try { // Get as many items as available or as fit
 			
-			if (robot.getType() == RobotType.Careful && fragileMailPool.size() > 0) {
-				tube.addItem(fragileMailPool.remove().mailItem); //only take one fragile item
+			if (type == RobotType.Careful && fragileMailPool.size() > 0) {
+				tube.addItem(fragileMailPool.remove().mailItem, type); //only take one fragile item
 			}else {
 				if (!(robot instanceof WeakRobot)) {
 					while(tube.getSize() < tube.getMaximumCapacity() && !normalMailPool.isEmpty() ) {
 						Item item = normalMailPool.remove();
 						if (!item.heavy) lightCount--;
-						tube.addItem(item.mailItem);
+						tube.addItem(item.mailItem, type);
 					}
 				} else {
 					ListIterator<Item> i = normalMailPool.listIterator();
 					while(tube.getSize() < tube.getMaximumCapacity() && lightCount > 0) {
 						Item item = i.next();
 						if (!item.heavy) {
-							tube.addItem(item.mailItem);
+							tube.addItem(item.mailItem, type);
 							i.remove();
 							lightCount--;
 						}
