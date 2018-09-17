@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
+import automail.CarefulRobot;
 import automail.MailItem;
 import automail.PriorityMailItem;
 import automail.Robot;
@@ -86,25 +87,24 @@ public class MyMailPool implements IMailPool {
 	
 	private void fillStorageTube(Robot robot) throws FragileItemBrokenException {
 		StorageTube tube = robot.getTube();
-		RobotType type = robot.getType();
 		
 		try { // Get as many items as available or as fit
 			
-			if (type == RobotType.Careful && fragileMailPool.size() > 0) {
-				tube.addItem(fragileMailPool.remove().mailItem, type); //only take one fragile item
+			if (robot instanceof CarefulRobot && fragileMailPool.size() > 0) {
+				tube.addItem(fragileMailPool.remove().mailItem); //only take one fragile item
 			}else {
 				if (!(robot instanceof WeakRobot)) {
 					while(tube.getSize() < tube.getMaximumCapacity() && !normalMailPool.isEmpty() ) {
 						Item item = normalMailPool.remove();
 						if (!item.isHeavy) lightCount--;
-						tube.addItem(item.mailItem, type);
+						tube.addItem(item.mailItem);
 					}
 				} else {
 					ListIterator<Item> i = normalMailPool.listIterator();
 					while(tube.getSize() < tube.getMaximumCapacity() && lightCount > 0) {
 						Item item = i.next();
 						if (!item.isHeavy) {
-							tube.addItem(item.mailItem, type);
+							tube.addItem(item.mailItem);
 							i.remove();
 							lightCount--;
 						}
@@ -123,7 +123,7 @@ public class MyMailPool implements IMailPool {
 
 	@Override
 	public void registerWaiting(Robot robot) { // assumes won't be there
-		if (robot.getType() != RobotType.Weak){
+		if (!(robot instanceof WeakRobot)){
 			robots.add(robot); 
 		} else {
 			robots.addLast(robot); // weak robot last as want more efficient delivery with highest priorities

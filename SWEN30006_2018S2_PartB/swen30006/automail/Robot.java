@@ -25,8 +25,8 @@ public abstract class Robot {
     private IMailPool mailPool;
     private boolean receivedDispatch;    
     private MailItem deliveryItem;
-    private RobotType type;
     
+    private RobotType type;
     private int deliveryCounter;
     
 
@@ -43,7 +43,7 @@ public abstract class Robot {
         // current_state = RobotState.WAITING;
     	current_state = RobotState.RETURNING;
         current_floor = Building.MAILROOM_LOCATION;
-        tube = new StorageTube(type.getTubeCapacity());
+        tube = new StorageTube(type.getTubeCapacity(), type.canCarryFragile());
         this.type = type;
         this.delivery = delivery;
         this.mailPool = mailPool;
@@ -111,10 +111,6 @@ public abstract class Robot {
     			}
                 break;
     	}
-    }
-    
-    public RobotType getType() {
-    	return type;
     }
     
     public int getCurrentFloor() {

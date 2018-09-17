@@ -13,13 +13,15 @@ public class StorageTube {
 
     private final int CAPACITY;
     private LinkedList<MailItem> tube;
+    private final boolean CAN_TAKE_FRAGILE;
 
     /**
      * Constructor for the storage tube
      */
-    public StorageTube(int capacity){
+    public StorageTube(int capacity, boolean canTakeFragile){
     	this.CAPACITY = capacity;
         this.tube = new LinkedList<MailItem>();
+        this.CAN_TAKE_FRAGILE = canTakeFragile;
     }
 
     public int getMaximumCapacity() {
@@ -52,9 +54,9 @@ public class StorageTube {
      * @param item The item being added
      * @throws TubeFullException thrown if an item is added which exceeds the capacity
      */
-    public void addItem(MailItem item, RobotType robotType) throws TubeFullException, FragileItemBrokenException {
+    public void addItem(MailItem item) throws TubeFullException, FragileItemBrokenException {
     	
-    	if (item.fragile && robotType != RobotType.Careful) {
+    	if (item.fragile && !CAN_TAKE_FRAGILE) {
     		throw new FragileItemBrokenException();
     	}
     	

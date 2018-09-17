@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.2" icons="true" automaticImage="JPEG" always-add-relationships="false" 
-  generalizations="true" realizations="true" associations="true" dependencies="true" nesting-relationships="true" 
+  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true" 
   router="FAN">  
   <class id="1" language="java" name="automail.MailGenerator" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/automail/MailGenerator.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="317" width="375" x="2296" y="870"/>    
+    <position height="-1" width="-1" x="761" y="-64"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -15,7 +15,7 @@
   <class id="2" language="java" name="automail.CarefulRobot" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/automail/CarefulRobot.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="119" width="226" x="1342" y="1335"/>    
+    <position height="-1" width="-1" x="1480" y="1312"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -25,7 +25,7 @@
   <class id="3" language="java" name="automail.PriorityMailItem" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/automail/PriorityMailItem.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="137" width="224" x="2361" y="2244"/>    
+    <position height="-1" width="-1" x="2330" y="961"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -35,7 +35,7 @@
   <class id="4" language="java" name="automail.StandardRobot" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/automail/StandardRobot.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="83" width="236" x="1873" y="1335"/>    
+    <position height="-1" width="-1" x="1217" y="1294"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -45,7 +45,7 @@
   <class id="5" language="java" name="automail.StorageTube" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/automail/StorageTube.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="227" width="210" x="730" y="1335"/>    
+    <position height="-1" width="-1" x="1927" y="891"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -55,7 +55,7 @@
   <class id="6" language="java" name="automail.WeakRobot" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/automail/WeakRobot.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="83" width="217" x="1064" y="1335"/>    
+    <position height="-1" width="-1" x="1737" y="1298"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -65,7 +65,7 @@
   <class id="7" language="java" name="strategies.MyMailPool" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/strategies/MyMailPool.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="191" width="185" x="690" y="639"/>    
+    <position height="-1" width="-1" x="1800" y="280"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
   <class id="8" language="java" name="automail.MailItem" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/automail/MailItem.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="335" width="197" x="1657" y="1869"/>    
+    <position height="-1" width="-1" x="2334" y="669"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -85,7 +85,7 @@
   <interface id="9" language="java" name="strategies.IMailPool" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/strategies/IMailPool.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="137" width="185" x="1657" y="1602"/>    
+    <position height="-1" width="-1" x="766" y="303"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -95,7 +95,7 @@
   <class id="10" language="java" name="automail.Robot" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/automail/Robot.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="425" width="248" x="1589" y="870"/>    
+    <position height="407" width="248" x="1205" y="504"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -105,7 +105,7 @@
   <class id="11" language="java" name="strategies.Automail" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/strategies/Automail.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="83" width="296" x="1858" y="639"/>    
+    <position height="-1" width="-1" x="777" y="700"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -115,7 +115,7 @@
   <class id="12" language="java" name="automail.Building" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/automail/Building.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="137" width="178" x="2380" y="1335"/>    
+    <position height="-1" width="-1" x="252" y="513"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -126,7 +126,7 @@
     project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/automail/Simulation.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="227" width="151" x="982" y="1602"/>    
+    <position height="-1" width="-1" x="2764" y="968"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -136,7 +136,7 @@
   <class id="14" language="java" name="automail.BigRobot" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/automail/BigRobot.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="83" width="204" x="1629" y="1335"/>    
+    <position height="-1" width="-1" x="968" y="1296"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -147,7 +147,7 @@
     project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/strategies/MyMailPool.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="101" width="147" x="438" y="870"/>    
+    <position height="-1" width="-1" x="1798" y="35"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -157,7 +157,7 @@
   <class id="16" language="java" name="automail.Simulation" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/automail/Simulation.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="173" width="241" x="2296" y="426"/>    
+    <position height="173" width="241" x="2642" y="504"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -167,7 +167,7 @@
   <interface id="17" language="java" name="automail.IMailDelivery" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/automail/IMailDelivery.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="83" width="141" x="1909" y="1602"/>    
+    <position height="-1" width="-1" x="1319" y="-53"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -178,7 +178,7 @@
     project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/automail/Robot.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="137" width="166" x="2090" y="1602"/>    
+    <position height="-1" width="-1" x="889" y="925"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -189,7 +189,7 @@
     project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/automail/Simulation.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="101" width="141" x="2732" y="870"/>    
+    <position height="-1" width="-1" x="2752" y="-55"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -199,7 +199,7 @@
   <class id="20" language="java" name="automail.Clock" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/automail/Clock.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="155" width="177" x="2598" y="1335"/>    
+    <position height="-1" width="-1" x="251" y="698"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -209,421 +209,182 @@
   <class id="21" language="java" name="strategies.MyMailPool.Item" project="SWEN30006-Project-B_SWEN30006_2018S2_PartB" 
     file="/SWEN30006-Project-B_SWEN30006_2018S2_PartB/swen30006/strategies/MyMailPool.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="155" width="121" x="527" y="1335"/>    
+    <position height="-1" width="-1" x="2335" y="267"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <dependency id="22">    
-    <bendpoint x="2349" y="1335"/>    
-    <bendpoint x="2370" y="1602"/>    
-    <bendpoint x="2370" y="1869"/>    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
-  <dependency id="23">    
-    <bendpoint x="636" y="1602"/>    
-    <bendpoint x="636" y="1869"/>    
-    <end type="SOURCE" refId="21"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
-  <association id="24">    
-    <bendpoint x="657" y="1602"/>    
-    <end type="SOURCE" refId="21" navigable="false">      
-      <attribute id="25" name="mailItem"/>      
-      <multiplicity id="26" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="27">    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="20"/>  
-  </dependency>  
-  <dependency id="28">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="12"/>  
-  </dependency>  
-  <dependency id="29">    
-    <bendpoint x="2328" y="1335"/>    
-    <bendpoint x="2328" y="1602"/>    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="8"/>  
-  </dependency>  
-  <association id="30">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="31" name="tube"/>      
-      <multiplicity id="32" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="33">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="13"/>  
-  </dependency>  
-  <dependency id="34">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="8"/>  
-  </dependency>  
-  <dependency id="35">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="17"/>  
-  </dependency>  
-  <dependency id="36">    
-    <bendpoint x="1470" y="870"/>    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="6"/>  
-  </dependency>  
-  <association id="37">    
-    <bendpoint x="2202" y="870"/>    
-    <bendpoint x="2202" y="1335"/>    
+  <association id="22">    
     <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="38" name="mailPool"/>      
-      <multiplicity id="39" minimum="0" maximum="1"/>    
+      <attribute id="23" name="mailPool"/>      
+      <multiplicity id="24" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="40">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="13"/>  
-  </dependency>  
-  <dependency id="41">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="20"/>  
-  </dependency>  
-  <dependency id="42">    
-    <bendpoint x="2903" y="639"/>    
-    <bendpoint x="2903" y="870"/>    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="20"/>  
-  </dependency>  
-  <association id="43">    
-    <bendpoint x="2265" y="639"/>    
-    <bendpoint x="2265" y="870"/>    
-    <bendpoint x="2286" y="1335"/>    
-    <bendpoint x="2286" y="1602"/>    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="44" name="MAIL_DELIVERED"/>      
-      <multiplicity id="45" minimum="0" maximum="2147483647"/>    
+  <association id="25">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="26" name="robots"/>      
+      <multiplicity id="27" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
+    <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="46">    
-    <bendpoint x="2805" y="1335"/>    
-    <bendpoint x="2349" y="1602"/>    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="8"/>  
-  </dependency>  
-  <association id="47">    
-    <bendpoint x="1012" y="1335"/>    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="48" name="type"/>      
-      <multiplicity id="49" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="50">    
-    <bendpoint x="1031" y="870"/>    
-    <bendpoint x="1033" y="1335"/>    
+  <realization id="28">    
     <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="9"/>  
   </realization>  
-  <dependency id="51">    
-    <bendpoint x="2223" y="870"/>    
-    <bendpoint x="2244" y="1335"/>    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="17"/>  
-  </dependency>  
-  <dependency id="52">    
-    <bendpoint x="2701" y="639"/>    
-    <bendpoint x="2701" y="870"/>    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="12"/>  
-  </dependency>  
-  <dependency id="53">    
-    <bendpoint x="1052" y="870"/>    
-    <bendpoint x="991" y="1335"/>    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="13"/>  
-  </dependency>  
-  <dependency id="54">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="9"/>  
-  </dependency>  
-  <dependency id="55">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="9"/>  
-  </dependency>  
-  <dependency id="56">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="13"/>  
-  </dependency>  
-  <dependency id="57">    
-    <bendpoint x="1888" y="870"/>    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="4"/>  
-  </dependency>  
-  <realization id="58">    
-    <bendpoint x="2307" y="1335"/>    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="17"/>  
-  </realization>  
-  <generalization id="59">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="10"/>  
-  </generalization>  
-  <dependency id="60">    
-    <bendpoint x="1867" y="870"/>    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="14"/>  
-  </dependency>  
-  <dependency id="61">    
-    <bendpoint x="2924" y="639"/>    
-    <bendpoint x="2924" y="870"/>    
-    <bendpoint x="2924" y="1335"/>    
-    <bendpoint x="2924" y="1602"/>    
-    <bendpoint x="2924" y="1869"/>    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
-  <association id="62">    
-    <bendpoint x="615" y="870"/>    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="63" name="normalMailPool"/>      
-      <multiplicity id="64" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="65">    
-    <bendpoint x="970" y="639"/>    
-    <bendpoint x="970" y="870"/>    
-    <bendpoint x="970" y="1335"/>    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="13"/>  
-  </nesting>  
-  <generalization id="66">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="10"/>  
-  </generalization>  
-  <nesting id="67">    
-    <bendpoint x="2160" y="1335"/>    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="18"/>  
-  </nesting>  
-  <dependency id="68">    
-    <bendpoint x="678" y="870"/>    
-    <bendpoint x="678" y="1335"/>    
-    <bendpoint x="678" y="1602"/>    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="8"/>  
-  </dependency>  
-  <nesting id="69">    
-    <bendpoint x="2722" y="639"/>    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="19"/>  
-  </nesting>  
-  <association id="70">    
-    <bendpoint x="1598" y="1335"/>    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="71" name="mailPool"/>      
-      <multiplicity id="72" minimum="0" maximum="1"/>    
+  <association id="29">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="30" name="mailPool"/>      
+      <multiplicity id="31" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <nesting id="73">    
+  <nesting id="32">    
     <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="15"/>  
-  </nesting>  
-  <association id="74">    
-    <bendpoint x="2181" y="1335"/>    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="75" name="current_state"/>      
-      <multiplicity id="76" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="77">    
-    <end type="SOURCE" refId="15"/>    
     <end type="TARGET" refId="21"/>  
-  </dependency>  
-  <generalization id="78">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="10"/>  
-  </generalization>  
-  <dependency id="79">    
-    <bendpoint x="1073" y="870"/>    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="6"/>  
-  </dependency>  
-  <dependency id="80">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="20"/>  
-  </dependency>  
-  <dependency id="81">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="18"/>  
-  </dependency>  
-  <dependency id="82">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="9"/>  
-  </dependency>  
-  <dependency id="83">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="13"/>  
-  </dependency>  
-  <dependency id="84">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="9"/>  
-  </dependency>  
-  <association id="85">    
-    <bendpoint x="2139" y="1335"/>    
+  </nesting>  
+  <association id="33">    
     <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="86" name="delivery"/>      
-      <multiplicity id="87" minimum="0" maximum="1"/>    
+      <attribute id="34" name="delivery"/>      
+      <multiplicity id="35" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="17" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="88">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="17"/>  
-  </dependency>  
-  <dependency id="89">    
-    <end type="SOURCE" refId="21"/>    
-    <end type="TARGET" refId="13"/>  
-  </dependency>  
-  <dependency id="90">    
-    <bendpoint x="699" y="870"/>    
-    <bendpoint x="699" y="1335"/>    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="13"/>  
-  </dependency>  
-  <dependency id="91">    
+  <association id="36">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="37" name="tube"/>      
+      <multiplicity id="38" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="39">    
     <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="12"/>  
-  </dependency>  
-  <generalization id="92">    
-    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="18"/>  
+  </nesting>  
+  <nesting id="40">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="19"/>  
+  </nesting>  
+  <association id="41">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="42" name="mailItem"/>      
+      <multiplicity id="43" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="44">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <generalization id="45">    
+    <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="10"/>  
   </generalization>  
-  <dependency id="93">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="8"/>  
-  </dependency>  
-  <association id="94">    
-    <bendpoint x="951" y="1602"/>    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="95" name="tube"/>      
-      <multiplicity id="96" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="97">    
-    <bendpoint x="1311" y="1335"/>    
-    <bendpoint x="1311" y="1602"/>    
+  <association id="46">    
     <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="98" name="deliveryItem"/>      
-      <multiplicity id="99" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="100">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="101" name="robots"/>      
-      <multiplicity id="102" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="103">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="13"/>  
-  </dependency>  
-  <dependency id="104">    
-    <bendpoint x="2244" y="639"/>    
-    <bendpoint x="2244" y="870"/>    
-    <bendpoint x="2223" y="1335"/>    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="9"/>  
-  </dependency>  
-  <dependency id="105">    
-    <bendpoint x="1827" y="639"/>    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="10"/>  
-  </dependency>  
-  <association id="106">    
-    <bendpoint x="636" y="870"/>    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="107" name="fragileMailPool"/>      
-      <multiplicity id="108" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="109">    
-    <bendpoint x="2265" y="1335"/>    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="110" name="mailPool"/>      
-      <multiplicity id="111" minimum="0" maximum="1"/>    
+      <attribute id="47" name="mailPool"/>      
+      <multiplicity id="48" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <nesting id="112">    
-    <bendpoint x="657" y="870"/>    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="21"/>  
+  <nesting id="49">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="13"/>  
   </nesting>  
-  <association id="113">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="114" name="robots"/>      
-      <multiplicity id="115" minimum="0" maximum="2147483647"/>    
+  <association id="50">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="51" name="MAIL_DELIVERED"/>      
+      <multiplicity id="52" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="53">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="54" name="deliveryItem"/>      
+      <multiplicity id="55" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="56">    
+    <bendpoint x="2026" y="1266"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="57" name="type"/>      
+      <multiplicity id="58" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="59">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="60" name="robots"/>      
+      <multiplicity id="61" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="116">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="17"/>  
-  </dependency>  
-  <generalization id="117">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <dependency id="118">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="11"/>  
-  </dependency>  
-  <dependency id="119">    
-    <bendpoint x="2305" y="639"/>    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="1"/>  
-  </dependency>  
-  <dependency id="120">    
-    <bendpoint x="720" y="870"/>    
+  <nesting id="62">    
     <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="5"/>  
-  </dependency>  
-  <dependency id="121">    
-    <bendpoint x="1558" y="870"/>    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="2"/>  
-  </dependency>  
-  <dependency id="122">    
-    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="15"/>  
+  </nesting>  
+  <generalization id="63">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <association id="64">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="65" name="current_state"/>      
+      <multiplicity id="66" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="67">    
+    <end type="SOURCE" refId="19"/>    
     <end type="TARGET" refId="17"/>  
-  </dependency>  
+  </realization>  
+  <generalization id="68">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <association id="69">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="70" name="fragileMailPool"/>      
+      <multiplicity id="71" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="72">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <association id="73">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="74" name="tube"/>      
+      <multiplicity id="75" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="76">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="77" name="normalMailPool"/>      
+      <multiplicity id="78" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

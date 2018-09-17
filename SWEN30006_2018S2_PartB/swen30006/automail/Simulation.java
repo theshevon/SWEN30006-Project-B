@@ -28,17 +28,19 @@ public class Simulation {
     private static double total_score = 0;
 
     public static enum RobotType {
-    	Big(Integer.MAX_VALUE, 6), 
-    	Careful(Integer.MAX_VALUE, 3), 
-    	Standard(Integer.MAX_VALUE, 4), 
-    	Weak(2000, 4);
+    	Big(Integer.MAX_VALUE, 6, false), 
+    	Standard(Integer.MAX_VALUE, 4, false), 
+    	Careful(Integer.MAX_VALUE, 3, true), 
+    	Weak(2000, 4, false);
     	
     	private int maxCarryingWeight;
     	private int tubeCapacity;
+    	private boolean canCarryFragile;
     	
-    	private RobotType(int maxCarryingWeight, int tubeCapacity) {
+    	private RobotType(int maxCarryingWeight, int tubeCapacity, boolean canCarryFragile) {
     		this.maxCarryingWeight = maxCarryingWeight;
     		this.tubeCapacity = tubeCapacity;
+    		this.canCarryFragile = canCarryFragile;
     	}
     	
     	public int getMaxWeight() {
@@ -47,6 +49,10 @@ public class Simulation {
     	
     	public int getTubeCapacity() {
     		return tubeCapacity;
+    	}
+    	
+    	public boolean canCarryFragile() {
+    		return canCarryFragile;
     	}
     }
     
