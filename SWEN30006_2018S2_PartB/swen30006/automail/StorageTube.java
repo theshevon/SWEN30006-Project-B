@@ -2,28 +2,30 @@ package automail;
 
 import java.util.LinkedList;
 
-import automail.Simulation.RobotType;
 import exceptions.FragileItemBrokenException;
 import exceptions.TubeFullException;
 
 /**
- * The storage tube carried by the robot.
+ * Class used to create a storage tube for a robot
  */
 public class StorageTube {
 
     private final int CAPACITY;
+    private final boolean CAN_TAKE_FRAGILE; // stores whether or not the robot can carrying fragile items
     private LinkedList<MailItem> tube;
-    private final boolean CAN_TAKE_FRAGILE;
 
     /**
      * Constructor for the storage tube
      */
     public StorageTube(int capacity, boolean canTakeFragile){
     	this.CAPACITY = capacity;
-        this.tube = new LinkedList<MailItem>();
         this.CAN_TAKE_FRAGILE = canTakeFragile;
+        this.tube = new LinkedList<MailItem>();
     }
 
+    /**
+     * @return the maximum capacity of the tube
+     */
     public int getMaximumCapacity() {
     	return CAPACITY;
     }
@@ -56,18 +58,25 @@ public class StorageTube {
      */
     public void addItem(MailItem item) throws TubeFullException, FragileItemBrokenException {
     	
-    	if (item.fragile && !CAN_TAKE_FRAGILE) {
+    	// throw an exception if a non-Careful robot attempts to take a fragile item
+    	if (item.isFragile() && !CAN_TAKE_FRAGILE) {
     		throw new FragileItemBrokenException();
     	}
     	
-        if(tube.size() < CAPACITY){
+        if (tube.size() < CAPACITY){
+        	
         	if (tube.isEmpty()) {
         		tube.add(item);
-        	} else if (item.getFragile() || tube.peek().getFragile()) {
+        	} 
+        	// if the robot already has a fragile item in its tube and attempts to take another, 
+        	// throw an exception
+        	else if (item.isFragile() || tube.peek().isFragile()) {
         		throw new FragileItemBrokenException();
-        	} else {
+        	}
+        	else {
         		tube.add(item);
         	}
+        	
         } else {
             throw new TubeFullException();
         }

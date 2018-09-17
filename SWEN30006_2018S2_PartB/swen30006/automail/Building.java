@@ -1,7 +1,9 @@
 package automail;
 
+/**
+ * Class that represents the building in the delivery simulation
+ */
 public class Building {
-	
 	
     /** The number of floors in the building **/
     public static int FLOORS;
@@ -11,5 +13,4 @@ public class Building {
     
     /** Represents the mailroom location */
     public static final int MAILROOM_LOCATION = 1;
-
 }

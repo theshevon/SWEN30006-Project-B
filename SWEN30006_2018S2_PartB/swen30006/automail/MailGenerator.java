@@ -5,22 +5,20 @@ import java.util.*;
 import strategies.IMailPool;
 
 /**
- * This class generates the mail
+ * Class used to generate mail
  */
 public class MailGenerator {
 
-    public final int MAIL_TO_CREATE;
+	// Number of mail items to create
+    private final int MAIL_TO_CREATE;
+    
+    /** This seed is used to make the behaviour deterministic */
+    private final Random random;
     
     private final boolean handlingFragile;
-
     private int mailCreated;
-
-    private final Random random;
-    /** This seed is used to make the behaviour deterministic */
-    
     private boolean complete;
     private IMailPool mailPool;
-
     private HashMap<Integer,ArrayList<MailItem>> allMail;
 
     /**
@@ -29,16 +27,19 @@ public class MailGenerator {
      * @param mailPool where mail items go on arrival
      * @param seed random seed for generating mail
      */
-    public MailGenerator(int mailToCreate, IMailPool mailPool, HashMap<Boolean,Integer> seed, boolean fragile){
-        if(seed.containsKey(true)){
+    public MailGenerator(int mailToCreate, IMailPool mailPool, HashMap<Boolean,Integer> seed, 
+    																						boolean fragile){
+        
+    	if (seed.containsKey(true)){
         	this.random = new Random((long) seed.get(true));
         }
         else{
         	this.random = new Random();	
         }
+    	
         // Vary arriving mail by +/-20%
         MAIL_TO_CREATE = mailToCreate*4/5 + random.nextInt(mailToCreate*2/5);
-        // System.out.println("Num Mail Items: "+MAIL_TO_CREATE);
+        // System.out.println("Num Mail Items: " + MAIL_TO_CREATE);
         mailCreated = 0;
         complete = false;
         allMail = new HashMap<Integer,ArrayList<MailItem>>();
@@ -50,12 +51,14 @@ public class MailGenerator {
      * @return a new mail item that needs to be delivered
      */
     private MailItem generateMail(){
+    	
     	MailItem newMailItem;
         int dest_floor = generateDestinationFloor();
         int priority_level = generatePriorityLevel();
         int arrival_time = generateArrivalTime();
         int weight = generateWeight();
     	boolean fragile = handlingFragile && (random.nextInt(8) == 0);
+    	
         // Check if arrival time has a priority mail
         if(	(random.nextInt(6) > 0) ||  // Skew towards non priority mail
         	(allMail.containsKey(arrival_time) &&
@@ -149,4 +152,10 @@ public class MailGenerator {
         return priority;
     }
     
+    /**
+     * @return the number of mail generated
+     */
+    public int getNoMailToCreate() {
+    	return MAIL_TO_CREATE;
+    }
 }

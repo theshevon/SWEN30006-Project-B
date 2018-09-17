@@ -10,26 +10,27 @@ import java.util.TreeMap;
 import automail.Simulation.RobotType;
 
 /**
- * The robot delivers mail!
+ * Abstract class used to create a robot
  */
 public abstract class Robot {
 
-	StorageTube tube;
-    IMailDelivery delivery;
-    protected final String id;
-    /** Possible states the robot can be in */
+	/** Possible states the robot can be in */
     public enum RobotState { DELIVERING, WAITING, RETURNING }
-    public RobotState current_state;
-    private int current_floor;
-    private int destination_floor;
+    
+	private final String id;
+	
+	private StorageTube tube;
+    private IMailDelivery delivery;
     private IMailPool mailPool;
-    private boolean receivedDispatch;    
     private MailItem deliveryItem;
     
+    private RobotState current_state;
     private RobotType type;
+    private int current_floor;
+    private int destination_floor;
+    private boolean receivedDispatch;    
     private int deliveryCounter;
     
-
     /**
      * Initiates the robot's location at the start to be at the mailroom
      * also set it to be waiting for mail.
@@ -39,11 +40,14 @@ public abstract class Robot {
      * @param strong is whether the robot can carry heavy items
      */
     public Robot(IMailDelivery delivery, IMailPool mailPool, RobotType type){
+    	
     	id = "R" + hashCode();
+    	
         // current_state = RobotState.WAITING;
     	current_state = RobotState.RETURNING;
         current_floor = Building.MAILROOM_LOCATION;
         tube = new StorageTube(type.getTubeCapacity(), type.canCarryFragile());
+        
         this.type = type;
         this.delivery = delivery;
         this.mailPool = mailPool;
@@ -51,24 +55,35 @@ public abstract class Robot {
         this.deliveryCounter = 0;
     }
     
+    /**
+     * Sets the robots to dispatch
+     */
     public void dispatch() {
     	receivedDispatch = true;
     }
 
     /**
-     * This is called on every time step
-     * @throws ExcessiveDeliveryException if robot delivers more than the capacity of the tube without refilling
+     * Moves the robot towards its destination depending on the number of clock ticks. This is called
+     * every time step
+     * @throws ExcessiveDeliveryException if robot delivers more than the capacity of the tube without 
+     * refilling
+     * @throws ItemTooHeavyException if a robot takes a MailItem from its StorageTube which is too heavy
+     * @throws FragileItemBrokenException if the robot moves too fast or other items are put in the tube 
+	 * when it already contains a fragile item
      */
     public void step() throws ExcessiveDeliveryException, ItemTooHeavyException, FragileItemBrokenException {    	
-    	switch(current_state) {
+    	
+    	switch (current_state) {
+    		
     		/** This state is triggered when the robot is returning to the mailroom after a delivery */
     		case RETURNING:
+    			
     			/** If its current position is at the mailroom, then the robot should change state */
-                if(current_floor == Building.MAILROOM_LOCATION){
+                if (current_floor == Building.MAILROOM_LOCATION){
                 	while(!tube.isEmpty()) {
                 		MailItem mailItem = tube.removeItem();
                 		mailPool.addToPool(mailItem);
-                        System.out.printf("T: %3d > old addToPool [%s]%n", Clock.Time(), mailItem.toString());
+                        System.out.printf("T: %3d > old addToPool [%s]%n", Clock.Time(),mailItem.toString());
                 	}
         			/** Tell the sorter the robot is ready */
         			mailPool.registerWaiting(this);
@@ -79,8 +94,10 @@ public abstract class Robot {
                 	break;
                 }
     		case WAITING:
-                /** If the StorageTube is ready and the Robot is waiting in the mailroom then start the delivery */
-                if(!tube.isEmpty() && receivedDispatch){
+                
+    			/** If the StorageTube is ready and the Robot is waiting in the mailroom then start the 
+                 * delivery */
+                if (!tube.isEmpty() && receivedDispatch){
                 	receivedDispatch = false;
                 	deliveryCounter = 0; // reset delivery counter
         			setRoute();
@@ -88,16 +105,18 @@ public abstract class Robot {
                 	changeState(RobotState.DELIVERING);
                 }
                 break;
+    		
     		case DELIVERING:
-    			if(current_floor == destination_floor){ // If already here drop off either way
+    			
+    			if (current_floor == destination_floor){ // If already here drop off either way
                     /** Delivery complete, report this to the simulator! */
                     delivery.deliver(deliveryItem);
                     deliveryCounter++;
-                    if(deliveryCounter > tube.getMaximumCapacity()){  // Implies a simulation bug
+                    if (deliveryCounter > tube.getMaximumCapacity()){  // Implies a simulation bug
                     	throw new ExcessiveDeliveryException();
                     }
                     /** Check if want to return, i.e. if there are no more items in the tube*/
-                    if(tube.isEmpty()){
+                    if (tube.isEmpty()){
                     	changeState(RobotState.RETURNING);
                     }
                     else{
@@ -113,14 +132,30 @@ public abstract class Robot {
     	}
     }
     
+    /**
+     * @return the current state of the robot
+     */
+    public RobotState getState() {
+    	return current_state;
+    }
+    
+    /**
+     * @return the current floor that the robot's one
+     */
     public int getCurrentFloor() {
     	return current_floor;
     }
     
-    public void setCurrentFloor(int nextFloor) {
-    	current_floor = nextFloor;
+    /**
+     * @param currentFloor the floor that the robot should be on 
+     */
+    public void setCurrentFloor(int currentFloor) {
+    	this.current_floor = currentFloor;
     }
     
+    /**
+     * @return the destination floor for the robot
+     */
     public int getDestinationFloor() {
     	return destination_floor;
     }
@@ -131,7 +166,7 @@ public abstract class Robot {
     private void setRoute() throws ItemTooHeavyException{
         /** Pop the item from the StorageUnit */
         deliveryItem = tube.removeItem();
-        if (deliveryItem.weight > type.getMaxWeight()) throw new ItemTooHeavyException(); 
+        if (deliveryItem.getWeight() > type.getMaxWeight()) throw new ItemTooHeavyException(); 
         /** Set the destination floor */
         destination_floor = deliveryItem.getDestFloor();
     }
@@ -143,9 +178,10 @@ public abstract class Robot {
     private void moveTowards(int destination) throws FragileItemBrokenException {
     	
     	if (type == RobotType.Careful) {
-    		if (!tube.isEmpty() && tube.peek().getFragile()) throw new FragileItemBrokenException();
+    		if (!tube.isEmpty() && tube.peek().isFragile()) throw new FragileItemBrokenException();
     	}else {
-    		if (deliveryItem != null && deliveryItem.getFragile() || !tube.isEmpty() && tube.peek().getFragile()) throw new FragileItemBrokenException();
+    		if (deliveryItem != null && deliveryItem.isFragile() || !tube.isEmpty() && 
+    										tube.peek().isFragile()) throw new FragileItemBrokenException();
     	}
     	
     	
@@ -167,7 +203,8 @@ public abstract class Robot {
      */
     private void changeState(RobotState nextState){
     	if (current_state != nextState) {
-            System.out.printf("T: %3d > %7s changed from %s to %s%n", Clock.Time(), getIdTube(), current_state, nextState);
+            System.out.printf("T: %3d > %7s changed from %s to %s%n", Clock.Time(), getIdTube(), 
+            																	current_state, nextState);
     	}
     	current_state = nextState;
     	if(nextState == RobotState.DELIVERING){
@@ -175,6 +212,9 @@ public abstract class Robot {
     	}
     }
 
+    /**
+     * @return the storage tube of the robot
+     */
 	public StorageTube getTube() {
 		return tube;
 	}

@@ -6,20 +6,20 @@ import java.util.TreeMap;
 // import java.util.UUID;
 
 /**
- * Represents a mail item
+ * Class used to create a mail item
  */
 public class MailItem {
 	
-    /** Represents the destination floor to which the mail is intended to go */
-    protected final int destination_floor;
-    /** The mail identifier */
-    protected final String id;
-    /** The time the mail item arrived */
-    protected final int arrival_time;
-    /** The weight in grams of the mail item */
-    protected final int weight;
-    /** Whether the mail item is fragile */
-    protected final boolean fragile;
+    // Represents the destination floor to which the mail is intended to go 
+    private final int destination_floor;
+    // The mail identifier 
+    private final String id;
+    // The time the mail item arrived 
+    private final int arrival_time;
+    // The weight in grams of the mail item 
+    private final int weight;
+    // Whether the mail item is fragile 
+    private final boolean fragile;
 
     /**
      * Constructor for a MailItem
@@ -37,11 +37,11 @@ public class MailItem {
 
     @Override
     public String toString(){
-        return String.format("Mail Item:: ID: %6s | Arrival: %4d | Destination: %2d | Weight: %4d | Fragile: %3s", id, arrival_time, destination_floor, weight, (fragile?"yes":"no") );
+        return String.format("Mail Item:: ID: %6s | Arrival: %4d | Destination: %2d | Weight: %4d | "
+        		+ "Fragile: %3s", id, arrival_time, destination_floor, weight, (fragile?"yes":"no") );
     }
 
     /**
-     *
      * @return the destination floor of the mail item
      */
     public int getDestFloor() {
@@ -49,7 +49,6 @@ public class MailItem {
     }
     
     /**
-     *
      * @return the ID of the mail item
      */
     public String getId() {
@@ -57,7 +56,6 @@ public class MailItem {
     }
 
     /**
-     *
      * @return the arrival time of the mail item
      */
     public int getArrivalTime(){
@@ -65,7 +63,6 @@ public class MailItem {
     }
 
     /**
-    *
     * @return the weight of the mail item
     */
    public int getWeight(){
@@ -73,21 +70,23 @@ public class MailItem {
    }
    
    /**
-    *
     * @return whether the mail item is fragile
     */
-   public boolean getFragile(){
+   public boolean isFragile(){
        return fragile;
    }
    
-	static private int count = 0;
-	static private Map<Integer, Integer> hashMap = new TreeMap<Integer, Integer>();
+   static private int count = 0;
+   static private Map<Integer, Integer> hashMap = new TreeMap<Integer, Integer>();
 
-	@Override
-	public int hashCode() {
-		Integer hash0 = super.hashCode();
-		Integer hash = hashMap.get(hash0);
-		if (hash == null) { hash = count++; hashMap.put(hash0, hash); }
-		return hash;
+   @Override
+   public int hashCode() {
+	   
+	   Integer hash0 = super.hashCode();
+	   Integer hash = hashMap.get(hash0);
+	   
+	   if (hash == null) { hash = count++; hashMap.put(hash0, hash); }
+	   
+	   return hash;
 	}
 }

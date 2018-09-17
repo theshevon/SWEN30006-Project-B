@@ -14,22 +14,25 @@ import automail.WeakRobot;
 import exceptions.FragileItemBrokenException;
 import exceptions.TubeFullException;
 
+/**
+ * Class to manage the mail pool
+ */
 public class MyMailPool implements IMailPool {
 	
 	private class Item {
-		int priority;
-		int destination;
-		boolean isHeavy;
-		boolean isFragile;
-		MailItem mailItem;
 		
-		// Use stable sort to keep arrival time relative positions
+		private int priority;
+		private int destination;
+		private boolean isHeavy;
+		private boolean isFragile;
+		private MailItem mailItem;
 		
 		public Item(MailItem mailItem) {
-			priority = (mailItem instanceof PriorityMailItem) ? ((PriorityMailItem) mailItem).getPriorityLevel() : 1;
+			priority = (mailItem instanceof PriorityMailItem) ? 
+													((PriorityMailItem) mailItem).getPriorityLevel() : 1;
 			isHeavy = mailItem.getWeight() >= RobotType.Weak.getMaxWeight();
 			destination = mailItem.getDestFloor();
-			isFragile = mailItem.getFragile();
+			isFragile = mailItem.isFragile();
 			this.mailItem = mailItem;
 		}
 	}
@@ -58,13 +61,16 @@ public class MyMailPool implements IMailPool {
 	private int lightCount;
 
 	public MyMailPool(){
-		// Start empty
 		normalMailPool = new LinkedList<Item>();
 		fragileMailPool = new LinkedList<Item>();
-		lightCount = 0;
 		robots = new LinkedList<Robot>();
+		lightCount = 0;
 	}
 
+	/**
+	 * Adds a new mail item to the pool
+	 * @param mailItem mail item to add
+	 */
 	public void addToPool(MailItem mailItem) {
 		Item item = new Item(mailItem);
 		
@@ -86,20 +92,25 @@ public class MyMailPool implements IMailPool {
 	}
 	
 	private void fillStorageTube(Robot robot) throws FragileItemBrokenException {
+		
 		StorageTube tube = robot.getTube();
 		
-		try { // Get as many items as available or as fit
+		// Get as many items as available or as fit
+		try { 
 			
 			if (robot instanceof CarefulRobot && fragileMailPool.size() > 0) {
 				tube.addItem(fragileMailPool.remove().mailItem); //only take one fragile item
-			}else {
+			}
+			else {
+				
 				if (!(robot instanceof WeakRobot)) {
 					while(tube.getSize() < tube.getMaximumCapacity() && !normalMailPool.isEmpty() ) {
 						Item item = normalMailPool.remove();
 						if (!item.isHeavy) lightCount--;
 						tube.addItem(item.mailItem);
 					}
-				} else {
+				} 
+				else {
 					ListIterator<Item> i = normalMailPool.listIterator();
 					while(tube.getSize() < tube.getMaximumCapacity() && lightCount > 0) {
 						Item item = i.next();

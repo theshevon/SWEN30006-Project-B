@@ -17,17 +17,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * This class simulates the behaviour of AutoMail
+ * Class used to simulate the behaviour of automail
  */
 public class Simulation {
 	
-    /** Constant for the mail generator */
-    private static int MAIL_TO_CREATE;
-    
-    private static ArrayList<MailItem> MAIL_DELIVERED;
-    private static double total_score = 0;
-
-    public static enum RobotType {
+	/**
+	 * Enumerations for different robot types
+	 */
+	public static enum RobotType {
+    	
     	Big(Integer.MAX_VALUE, 6, false), 
     	Standard(Integer.MAX_VALUE, 4, false), 
     	Careful(Integer.MAX_VALUE, 3, true), 
@@ -43,24 +41,38 @@ public class Simulation {
     		this.canCarryFragile = canCarryFragile;
     	}
     	
+    	/**
+    	 * @return The maximum weight of an item that the robot can carry 
+    	 */
     	public int getMaxWeight() {
     		return maxCarryingWeight;
     	}
     	
+    	/**
+    	 * @return The maximum number of items that the robot can carry in its tube
+    	 */
     	public int getTubeCapacity() {
     		return tubeCapacity;
     	}
     	
+    	/**
+    	 * @return True if the robot can carry fragile items
+    	 */
     	public boolean canCarryFragile() {
     		return canCarryFragile;
     	}
     }
     
-    public static void main(String[] args) throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+    private static ArrayList<MailItem> MAIL_DELIVERED;
+    private static double total_score = 0;
+
+    public static void main(String[] args) throws IOException, InstantiationException, 
+    														IllegalAccessException, ClassNotFoundException {
+    	
     	Properties automailProperties = new Properties();
-		// Default properties
-    	// automailProperties.setProperty("Robots", "Big,Careful,Standard,Weak");
-    	automailProperties.setProperty("Robots", "Standard");
+		
+    	// Default properties
+    	automailProperties.setProperty("Robots", "Big, Careful, Standard, Weak");
     	automailProperties.setProperty("MailPool", "strategies.SimpleMailPool");
     	automailProperties.setProperty("Floors", "10");
     	automailProperties.setProperty("Fragile", "false");
@@ -74,9 +86,10 @@ public class Simulation {
 			automailProperties.load(inStream);
 		} finally {
 			 if (inStream != null) {
-	                inStream.close();
-	            }
+				 inStream.close();
+	         }
 		}
+		
 		// MailPool
 		String mailPoolName = automailProperties.getProperty("MailPool");
 		IMailPool mailPool = (IMailPool) Class.forName(mailPoolName).newInstance();
@@ -89,14 +102,15 @@ public class Simulation {
         boolean fragile = Boolean.parseBoolean(automailProperties.getProperty("Fragile"));
         System.out.printf("Fragile: %5b%n", fragile);
 		// Mail_to_Create
-		MAIL_TO_CREATE = Integer.parseInt(automailProperties.getProperty("Mail_to_Create"));
-        System.out.printf("Mail_to_Create: %5d%n", MAIL_TO_CREATE);
+		int noMailToCreate = Integer.parseInt(automailProperties.getProperty("Mail_to_Create"));
+        System.out.printf("Mail_to_Create: %5d%n", noMailToCreate);
 		// Last_Delivery_Time
 		Clock.LAST_DELIVERY_TIME = Integer.parseInt(automailProperties.getProperty("Last_Delivery_Time"));
         System.out.printf("Last_Delivery_Time: %5d%n", Clock.LAST_DELIVERY_TIME);
 		// Robots
 		String robotsProp = automailProperties.getProperty("Robots");
-		List<RobotType> robotTypes = Stream.of(robotsProp.split(",")).map(RobotType::valueOf).collect(Collectors.toList());
+		List<RobotType> robotTypes = 
+				Stream.of(robotsProp.split(",")).map(RobotType::valueOf).collect(Collectors.toList());
 		System.out.print("Robots: "); System.out.println(robotTypes);
 
 		// End properties
@@ -107,10 +121,10 @@ public class Simulation {
         HashMap<Boolean, Integer> seedMap = new HashMap<>();
         
         /** Read the first argument and save it as a seed if it exists */
-        if (args.length == 0 ) { // No arg
-        	if (seedProp == null) { // and no property
-        		seedMap.put(false, 0); // so randomise
-        	} else { // Use property seed
+        if (args.length == 0 ) { 			// No arg
+        	if (seedProp == null) { 		// and no property
+        		seedMap.put(false, 0); 		// so randomise
+        	} else { 					    // Use property seed
         		seedMap.put(true, Integer.parseInt(seedProp));
         	}
         } else { // Use arg seed - overrides property
@@ -119,17 +133,19 @@ public class Simulation {
         Integer seed = seedMap.get(true);
         System.out.printf("Seed: %s%n", seed == null ? "null" : seed.toString());
         Automail automail = new Automail(mailPool, new ReportDelivery(), robotTypes);
-        MailGenerator mailGenerator = new MailGenerator(MAIL_TO_CREATE, automail.mailPool, seedMap, fragile);
+        MailGenerator mailGenerator = new MailGenerator(noMailToCreate, automail.getMailPool(), 
+        																				seedMap, fragile);
         
         /** Initiate all the mail */
         mailGenerator.generateAllMail();
+        
         // PriorityMailItem priority;  // Not used in this version
-        while(MAIL_DELIVERED.size() != mailGenerator.MAIL_TO_CREATE) {
-        	//System.out.println("-- Step: "+Clock.Time());
+        while(MAIL_DELIVERED.size() != mailGenerator.getNoMailToCreate()) {
+        	//System.out.println("-- Step: " + Clock.Time());
             /* priority = */ mailGenerator.step();
             try {
-                automail.mailPool.step();
-				for (int i=0; i<robotTypes.size(); i++) automail.robots.get(i).step();
+                automail.getMailPool().step();
+				for (int i=0; i<robotTypes.size(); i++) automail.getRobots().get(i).step();
 			} catch (ExcessiveDeliveryException|ItemTooHeavyException|FragileItemBrokenException e) {
 				e.printStackTrace();
 				System.out.println("Simulation unable to complete.");
@@ -137,6 +153,7 @@ public class Simulation {
 			}
             Clock.Tick();
         }
+        
         printResults();
     }
     
@@ -162,16 +179,22 @@ public class Simulation {
     }
     
     private static double calculateDeliveryScore(MailItem deliveryItem) {
+    	
     	// Penalty for longer delivery times
     	final double penalty = 1.2;
     	double priority_weight = 0;
-        // Take (delivery time - arrivalTime)**penalty * (1+sqrt(priority_weight))
-    	if(deliveryItem instanceof PriorityMailItem){
+    	
+        // Take (delivery time - arrivalTime)**penalty * (1+ sqrt(priority_weight))
+    	if (deliveryItem instanceof PriorityMailItem){
     		priority_weight = ((PriorityMailItem) deliveryItem).getPriorityLevel();
     	}
+    	
         return Math.pow(Clock.Time() - deliveryItem.getArrivalTime(),penalty)*(1+Math.sqrt(priority_weight));
     }
 
+    /**
+     * Prints the results of the simulation, ie. Completion time, final delivery time and final score.
+     */
     public static void printResults(){
         System.out.println("T: "+Clock.Time()+" | Simulation complete!");
         System.out.println("Final Delivery time: "+Clock.Time());
