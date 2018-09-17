@@ -54,7 +54,7 @@ public class StorageTube {
      */
     public void addItem(MailItem item, RobotType robotType) throws TubeFullException, FragileItemBrokenException {
     	
-    	if (robotType != RobotType.Careful) {
+    	if (item.fragile && robotType != RobotType.Careful) {
     		throw new FragileItemBrokenException();
     	}
     	
